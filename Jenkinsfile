@@ -5,6 +5,7 @@ pipeline {
       SECRET_PASS_DOCKER_HUB  = credentials('PASS_DOCKER_HUB')
       AWS_ACCESS_KEY_ID  = credentials('terraform_aws_access_key_id')
       AWS_SECRET_ACCESS_KEY  = credentials('terraform_aws_secret_access_key')
+      scannerHome = tool 'SONARQUEBE_SCANNER'
     }
 
     stages {       
@@ -51,6 +52,15 @@ pipeline {
         stage ('Unit Test') {
             steps {
                 sh 'npm run test'
+            }
+            
+        }
+
+        stage ('Analyizer Static Code') {
+            steps {
+                withSonarQubeEnv('SERVER_SONARQUBE'){
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
             
         }
