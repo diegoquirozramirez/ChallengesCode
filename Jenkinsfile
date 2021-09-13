@@ -14,6 +14,20 @@ pipeline {
             }
         }
 
+        stage('Get Environemt'){
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        sh "export path_config=${JENKINS_HOME}/configs/env.production"
+                    } else if(env.BRANCH_NAME == 'release') {
+                        sh "export path_config=${JENKINS_HOME}/configs/env.release"
+                    } else {
+                        sh "export path_config=${JENKINS_HOME}/configs/env.stage"
+                    }
+                }
+            }
+        }
+
         stage('Install Dependencies'){
             steps {
                 sh 'npm install --save'
@@ -59,7 +73,7 @@ pipeline {
         stage('Deploy'){
           steps {
             sh 'aws eks --region us-east-2 update-kubeconfig --name eks --profile terraform'
-            sh 'cd ${JENKINS_HOME}/kubectl_yamls/eks && kubect apply -f .'
+            sh "cd ${JENKINS_HOME}/kubectl_yamls/eks && kubect apply -f ."
           }        
         }
     }
