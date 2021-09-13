@@ -15,11 +15,7 @@ class DevOpsRouter {
     
     private routerDevops(): void {
         this.route.post(Endpoints.devOps.devOps, (req: Request<{}, {}, Sender>, res: Response) => {
-            try {                
-                res.json(DevOpsController.getDevOps(req.body, req.headers['x-jwt-kwy'], req.headers['x-parse-rest-api-key']))
-            } catch (error) {
-                res.json({message: Responses.EXECUTE_ERROR_SENDER, detail: error.message})
-            }
+            res.json(DevOpsController.getDevOps(req.body, req.headers['x-jwt-kwy'], req.headers['x-parse-rest-api-key']))
         })     
     }
 }
