@@ -1,4 +1,6 @@
-import * as express from 'express'
+import * as express from 'express';
+import Router from './routers/index';
+
 class App {
   public express: any;
   constructor () {
@@ -6,13 +8,8 @@ class App {
     this.mountRoutes()
   }
   private mountRoutes (): void {
-    const router = express.Router()
-    router.get('/', (req, res) => {
-      res.json({
-        message: 'Hello World!!!!'
-      })
-    })
-    this.express.use('/', router)
+    this.express.use(express.json())
+    this.express.use('/', new Router().routerDevOps)
   }
 }
 export default new App().express
