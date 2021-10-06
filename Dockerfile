@@ -20,7 +20,7 @@ RUN echo ${PWD}
 RUN ls
 
 #expone el puerto
-EXPOSE 3000
+EXPOSE 8080
 
 # comando para levantar microservicio
 CMD ["npm", "run", "start-prod"]
