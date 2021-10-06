@@ -67,6 +67,10 @@ stages:
       runOnce:
         deploy:
           steps:
+          - script: |
+              pwd
+              ls
+            displayName: 'Commands Ubic Dir & List inside Dir'
           - task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: appservices001'
             inputs:
