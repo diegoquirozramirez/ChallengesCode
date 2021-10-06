@@ -69,7 +69,7 @@ stages:
           steps:
           - task: CmdLine@2
             inputs:
-              script: 'ls' 
+              script: 'npm install --save' 
             displayName: 'Commands Ubic Dir & List inside Dir'
           - task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: appservices001'
