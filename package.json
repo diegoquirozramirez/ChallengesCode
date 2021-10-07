@@ -8,7 +8,7 @@
     "test": "jest --coverage --coverageDirectory=output/coverage/jest",
     "start-dev": "nodemon src/index.ts",
     "start-qa": "ts-node dist/index.js",
-    "start-prod": "ts-node dist/index.js",
+    "start": "node dist/index.js",
     "build": "tsc -p ."
   },
   "keywords": [],
