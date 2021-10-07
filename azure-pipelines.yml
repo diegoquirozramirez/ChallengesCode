@@ -32,7 +32,10 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/*'
+    Contents: |
+      **/*
+      !.git/**/*
+      !node_modules/**/*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     preserveTimestamp: true
