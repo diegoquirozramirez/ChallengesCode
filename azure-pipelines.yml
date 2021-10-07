@@ -37,7 +37,7 @@ steps:
     CleanTargetFolder: true
     preserveTimestamp: true
   displayName: 'Copy files'
-  condition: succeedeOrFailed()
+  condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -45,4 +45,4 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish'
-  condition: succeedeOrFailed()
+  condition: succeededOrFailed()
