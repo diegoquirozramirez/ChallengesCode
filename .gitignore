@@ -3,3 +3,4 @@ dist
 output
 *-lock.json
 test-report.xml
+.scannerwork
